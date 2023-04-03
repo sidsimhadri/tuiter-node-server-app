@@ -7,6 +7,8 @@ const createTuit = (req, res) => {
   newTuit.likes = 0;
   newTuit.liked = false;
   tuits.push(newTuit);
+  console.log(newTuit)
+  console.log(tuits)
   res.json(newTuit);
 }
 const findTuits = (req, res) =>
