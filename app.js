@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from "mongoose";
-
+import dotenv from 'dotenv';
 import HelloController
     from "./controllers/hello-controller.js"
   import UserController
@@ -9,7 +9,10 @@ import HelloController
 import TuitsController
   from "./controllers/tuits/tuits-controller.js";
 const app = express()
-mongoose.connect('mongodb://127.0.0.1:27017/tuiter');
+dotenv.config()
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING
+ || 'mongodb://127.0.0.1:27017/tuiter'
+mongoose.connect(CONNECTION_STRING);
 app.use(cors())
 app.use(express.json());
 TuitsController(app);
